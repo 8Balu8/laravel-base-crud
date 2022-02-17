@@ -94,4 +94,18 @@ class ComicController extends Controller
     {
         //
     }
+
+    // Function for validation
+    protected function getValidationRules()
+    {
+        return [
+            'title' => 'required|max:50',
+            'type' => 'required|max:20',
+            'series' => 'required|max:20',
+            'sale_date' => 'required|max:10',
+            'price' => 'required|max:6',
+            'thumb' => 'required|max:255',
+            'description' => 'required|max:60000'
+        ];
+    }
 }
