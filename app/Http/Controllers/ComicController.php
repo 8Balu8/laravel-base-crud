@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comic;
 
+use function PHPUnit\Framework\returnCallback;
+
 class ComicController extends Controller
 {
     /**
@@ -99,7 +101,10 @@ class ComicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comic_delete = Comic::findOrFail($id);
+        $comic_delete->delete();
+
+        return redirect()->route('comics.index');
     }
 
     // Function for validation

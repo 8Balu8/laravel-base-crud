@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <div class="container d-flex justify-content-center">
-        <div class="card" style="width: 24rem;">
+    <div class="container">
+        <div class="card m-auto" style="width: 24rem;">
             <img src="{{$comic->thumb}}" class="card-img-top" alt="{{$comic->title}}">
             <div class="card-body">
                 <h5 class="card-title">{{$comic->title}}</h5>
@@ -19,6 +19,12 @@
                     <a class="" href="{{ route('comics.edit', ['comic' => $comic->id]) }}">Edit</a>
                 </p>
                 <a href="#" class="btn btn-primary">Add to Cart</a>
+                <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+
+                    <button class="btn-danger mt-2" onclick="return confirm('!!!This action is irreversible!!!')">Delete</button>
+                </form>
             </div>
         </div>
     </div>
